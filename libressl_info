@@ -1,0 +1,39 @@
+root@ichigo:~ # pkg info libressl
+libressl-3.3.3
+Name           : libressl
+Version        : 3.3.3
+Installed on   : Wed May  5 03:01:22 2021 CDT
+Origin         : security/libressl
+Architecture   : FreeBSD:13:amd64
+Prefix         : /usr/local
+Categories     : security devel
+Licenses       : BSD4CLAUSE
+Maintainer     : brnrd@FreeBSD.org
+WWW            : http://www.libressl.org/
+Comment        : Free version of the SSL/TLS protocol forked from OpenSSL
+Options        :
+        MAN3           : on
+        NC             : on
+Shared Libs provided:
+        libtls.so.20
+        libcrypto.so.46
+        libssl.so.48
+Annotations    :
+        FreeBSD_version: 1300500
+        cpe            : cpe:2.3:a:openbsd:libressl:3.3.3:::::freebsd13:x64
+        flavor         : default
+        repo_type      : binary
+        repository     : poudriere
+Flat size      : 18.8MiB
+Description    :
+LibreSSL is an open-source implementation of the Secure Sockets Layer (SSL) and
+Transport Layer Security (TLS) protocols. It was forked from the OpenSSL
+cryptographic software library in April 2014 as a response by OpenBSD
+developers to the Heartbleed security vulnerability in OpenSSL,
+with the aim of refactoring the OpenSSL code so as to provide a more secure
+implementation.
+
+LibreSSL was forked from the OpenSSL library starting with the 1.0.1g branch
+and will follow the security guidelines used elsewhere in the OpenBSD project.
+
+WWW: http://www.libressl.org/
