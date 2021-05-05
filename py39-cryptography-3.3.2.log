@@ -1,0 +1,1852 @@
+=>> Building security/py-cryptography
+build started at Wed May  5 04:28:52 CDT 2021
+port directory: /usr/ports/security/py-cryptography
+package name: py39-cryptography-3.3.2
+building for: FreeBSD 13amd64-default-job-01 13.0-STABLE FreeBSD 13.0-STABLE 1300500 amd64
+maintained by: koobs@FreeBSD.org
+Makefile ident: 
+Poudriere version: 3.3.6
+Host OSVERSION: 1300500
+Jail OSVERSION: 1300500
+Job Id: 01
+
+---Begin Environment---
+SHELL=/bin/csh
+OSVERSION=1300500
+UNAME_v=FreeBSD 13.0-STABLE 1300500
+UNAME_r=13.0-STABLE
+BLOCKSIZE=K
+MAIL=/var/mail/root
+MM_CHARSET=UTF-8
+LANG=C.UTF-8
+STATUS=1
+HOME=/root
+PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:/root/bin
+LOCALBASE=/usr/local
+USER=root
+LIBEXECPREFIX=/usr/local/libexec/poudriere
+POUDRIERE_VERSION=3.3.6
+MASTERMNT=/usr/local/poudriere/data/.m/13amd64-default/ref
+POUDRIERE_BUILD_TYPE=bulk
+PACKAGE_BUILDING=yes
+SAVED_TERM=xterm
+PWD=/usr/local/poudriere/data/.m/13amd64-default/ref/.p/pool
+P_PORTS_FEATURES=FLAVORS SELECTED_OPTIONS
+MASTERNAME=13amd64-default
+SCRIPTPREFIX=/usr/local/share/poudriere
+OLDPWD=/usr/local/poudriere/data/.m/13amd64-default/ref/.p
+SCRIPTPATH=/usr/local/share/poudriere/bulk.sh
+POUDRIEREPATH=/usr/local/bin/poudriere
+---End Environment---
+
+---Begin Poudriere Port Flags/Env---
+PORT_FLAGS=
+PKGENV=
+FLAVOR=py39
+DEPENDS_ARGS=
+MAKE_ARGS= FLAVOR=py39
+---End Poudriere Port Flags/Env---
+
+---Begin OPTIONS List---
+---End OPTIONS List---
+
+--MAINTAINER--
+koobs@FreeBSD.org
+--End MAINTAINER--
+
+--CONFIGURE_ARGS--
+
+--End CONFIGURE_ARGS--
+
+--CONFIGURE_ENV--
+PYTHON="/usr/local/bin/python3.9" XDG_DATA_HOME=/wrkdirs/usr/ports/security/py-cryptography/work-py39  XDG_CONFIG_HOME=/wrkdirs/usr/ports/security/py-cryptography/work-py39  HOME=/wrkdirs/usr/ports/security/py-cryptography/work-py39 TMPDIR="/tmp" PATH=/ccache/libexec/ccache:/wrkdirs/usr/ports/security/py-cryptography/work-py39/.bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:/root/bin SHELL=/bin/sh CONFIG_SHELL=/bin/sh CCACHE_DIR="/root/.ccache"
+--End CONFIGURE_ENV--
+
+--MAKE_ENV--
+OPENSSLBASE=/usr/local OPENSSLDIR=/usr/local/openssl OPENSSLINC=/usr/local/include OPENSSLLIB=/usr/local/lib OPENSSLRPATH=/usr/local/lib XDG_DATA_HOME=/wrkdirs/usr/ports/security/py-cryptography/work-py39  XDG_CONFIG_HOME=/wrkdirs/usr/ports/security/py-cryptography/work-py39  HOME=/wrkdirs/usr/ports/security/py-cryptography/work-py39 TMPDIR="/tmp" PATH=/ccache/libexec/ccache:/wrkdirs/usr/ports/security/py-cryptography/work-py39/.bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:/root/bin NO_PIE=yes MK_DEBUG_FILES=no MK_KERNEL_SYMBOLS=no SHELL=/bin/sh NO_LINT=YES LDSHARED="cc -shared" PYTHONDONTWRITEBYTECODE= PYTHONOPTIMIZE= PREFIX=/usr/local  LOCALBASE=/usr/local  CC="cc" CFLAGS="-O2 -pipe  -I/usr/local/include -fstack-protector-strong -fno-strict-aliasing "  CPP="cpp" CPPFLAGS=""  LDFLAGS=" -L/usr/local/lib -Wl,-rpath,/usr/local/lib -fstack-protector-strong " LIBS=""  CXX="c++" CXXFLAGS="-O2 -pipe -I/usr/local/include -fstack-protector-strong -fno-strict-aliasing  "  MANPREFIX="/usr/local" CCACHE_DIR="/root/.ccache" BSD_INSTALL_PROGRAM="install  -s -m 555"  BSD_INSTALL_LIB="install  -s -m 0644"  BSD_INSTALL_SCRIPT="install  -m 555"  BSD_INSTALL_DATA="install  -m 0644"  BSD_INSTALL_MAN="install  -m 444"
+--End MAKE_ENV--
+
+--PLIST_SUB--
+PYTHON_INCLUDEDIR=include/python3.9  PYTHON_LIBDIR=lib/python3.9  PYTHON_PLATFORM=freebsd13  PYTHON_SITELIBDIR=lib/python3.9/site-packages  PYTHON_SUFFIX=39  PYTHON_EXT_SUFFIX=.cpython-39  PYTHON_VER=3.9  PYTHON_VERSION=python3.9 PYTHON2="@comment " PYTHON3="" OSREL=13.0 PREFIX=%D LOCALBASE=/usr/local  RESETPREFIX=/usr/local LIB32DIR=lib DOCSDIR="share/doc/py39-cryptography"  EXAMPLESDIR="share/examples/py39-cryptography"  DATADIR="share/py39-cryptography"  WWWDIR="www/py39-cryptography"  ETCDIR="etc/py39-cryptography"
+--End PLIST_SUB--
+
+--SUB_LIST--
+PREFIX=/usr/local LOCALBASE=/usr/local  DATADIR=/usr/local/share/py39-cryptography DOCSDIR=/usr/local/share/doc/py39-cryptography EXAMPLESDIR=/usr/local/share/examples/py39-cryptography  WWWDIR=/usr/local/www/py39-cryptography ETCDIR=/usr/local/etc/py39-cryptography
+--End SUB_LIST--
+
+---Begin make.conf---
+USE_PACKAGE_DEPENDS=yes
+BATCH=yes
+WRKDIRPREFIX=/wrkdirs
+PORTSDIR=/usr/ports
+PACKAGES=/packages
+DISTDIR=/distfiles
+PACKAGE_BUILDING=yes
+PACKAGE_BUILDING_FLAVORS=yes
+#### /usr/local/etc/poudriere.d/13amd64-make.conf ####
+### make.conf
+###############################################################################################################################################################################################################################################################
+# There are a number of things you can do to reduce the size and number of files in /boot/kernel.
+#
+# Possibly the best space saving is to be had by setting WITHOUT_KERNEL_SYMBOLS in /etc/src.conf 
+# (if this file doesn't already exist, just create it), and the next time you installkernel, the
+# debug symbol files won't be installed. It's safe to delete them now, if you need the space 
+# immediately (rm /boot/kernel/*.symbols)
+#
+# There are a few make.conf settings that control what modules are built:
+#
+#    NO_MODULES - disable building of modules completely
+#    MODULES_OVERRIDE - specify the modules you want to build
+#    WITHOUT_MODULES - list of modules that should not be built
+#
+# The NO_MODULES option is probably a bit too heavy-handed, so a judicious combination of the 
+# other two is a better choice. If you know exactly which modules you want, you can simply set 
+# them in MODULES_OVERRIDE. Note that WITHOUT_MODULES is evaluated after MODULES_OVERRIDE, so 
+# any module named in both lists will not be built.
+#
+# If you really want to suppress building of all modules, you can use NO_MODULES, and ensure 
+# that all required drivers and modules are statically compiled into the kernel. Each driver's 
+# manpage shows the appropriate lines to add to your kernel config file, so you should be able 
+# to figure out what you need.
+###############################################################################################################################################################################################################################################################
+
+#ALLOW_UNSUPPORTED_SYSTEM=true 
+#DISABLE_VULNERABILITIES=yes
+TRYBROKEN=true
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# FreeBSD 13.x has many debugging features turned on, in both the kernel        #
+# and userland.  These features attempt to detect incorrect use of              #
+# system primitives, and encourage loud failure through extra sanity            #
+# checking and fail stop semantics.  They also substantially impact             #
+# system performance.  If you want to do performance measurement,               #
+# benchmarking, and optimization, you'll want to turn them off.  This           #
+# includes various WITNESS- related kernel options, INVARIANTS, malloc          #
+# debugging flags in userland, and various verbose features in the              #
+# kernel.  Many developers choose to disable these features on build            #
+# machines to maximize performance.  (To completely disable malloc              #
+# debugging, define MALLOC_PRODUCTION in /etc/make.conf                         #
+#                                                                               #
+# From /usr/src/UPDATING, #20200912:                                            #
+#     The make.conf(5) MALLOC_PRODUCTION variable, used for disabling and       #
+#     enabling assertions and statistics gathering in malloc(3), has been       #
+#     migrated to a src.conf(5) WITH/WITHOUT_MALLOC_PRODUCTION option.          #
+#                                                                               #
+#     On stable branches, WITH_MALLOC_PRODUCTION is set by default, which       #
+#     means that malloc(3) has assertions and statistics gathering disabled,    #
+#     for improved performance.                                                 #
+#                                                                               #
+#     For backwards compatibility, the make.conf(5) MALLOC_PRODUCTION is still  #
+#     honored, but it is now deprecated and undocumented.                       #
+#MALLOC_PRODUCTION=yes								#
+#_______________________________________________________________________________#
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# Use ccache for builds					#
+#_______________________________________________________#
+
+WITH_CCACHE_BUILD=yes
+
+.if ${.CURDIR:M^/usr/src/}
+CCACHE_DIR=/var/cache/base/ccache
+.else
+CCACHE_DIR=/var/cache/ccache
+.endif
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+#  The graphics/jpeg port has been removed in favor of graphics/jpeg-turbo.	#
+#  The former port was vulnerable and used an outdated ABI and API.		#
+#										#
+#  Please check your make configuration for JPEG_PORT and remove it or		#
+#  set it to "jpeg-turbo" if it is currently set to "jpeg".			#
+#_______________________________________________________________________________#
+JPEG_PORT=graphics/jpeg-turbo
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+#WITH_DEBUG_PORTS+=editors/openoffice-devel		#
+#WITH_DEBUG_PORTS+=editors/openoffice-4			#
+#_______________________________________________________#
+
+###############################################################################################################################################################################################################################################################
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# Universal DEFAULT versions					#
+#								#
+# values defined in /usr/ports/Mk/bsd.default-versions.mk	#
+#_______________________________________________________________#
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# Ghostscript						#
+# Possible values: 7, 8, 9, agpl			#
+#_______________________________________________________#
+DEFAULT_VERSIONS+=GHOSTSCRIPT=agpl
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# Imagemagick						#
+# Possible values: 6, 7					#
+#_______________________________________________________#
+DEFAULT_VERSIONS+=IMAGEMAGICK=7
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# Java							#
+# Possible values: 7, 8, 11, 12, 13, 14, 15, 16		#
+#_______________________________________________________#
+DEFAULT_VERSIONS+=JAVA=8
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# make Linux infrastructure ports install mixed amd64/i386 CentOS 6 packages	#
+#_______________________________________________________________________________#
+DEFAULT_VERSIONS+=LINUX=c7
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# Possible values: 60, 70, 80, 90, 10, 11, -devel 	#
+# (to be used when non-base compiler is required)	#
+#_______________________________________________________#
+DEFAULT_VERSIONS+=LLVM=11
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# Lua							#
+# Possible values: 5.1, 5.2, 5.3, 5.4			#
+#_______________________________________________________#
+DEFAULT_VERSIONS+=LUA=5.4
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# Default python versions  -- there is NO python 3.5	#
+# Possible values: 2.7, 3.6, 3.7, 3.8, 3.9		#
+#							#
+# Below as of 4-24-21					#
+#PYTHON_DEFAULT?=        3.7				#
+# Possible values: 2.7					#
+#PYTHON2_DEFAULT?=       2.7				#
+# Possible values: 3.6, 3.7, 3.8, 3.9			#
+#PYTHON3_DEFAULT?=       3.9				#
+#_______________________________________________________#
+DEFAULT_VERSIONS+=python=3.9
+DEFAULT_VERSIONS+=python3=3.9
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# Ruby							#
+# Possible values: 2.6, 2.7, 3.0			#
+#_______________________________________________________#
+DEFAULT_VERSIONS+=RUBY=3.0
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# Rust 							#
+# While it may make some sense to have -nightly the 	#
+# default, it is build fail prone or too new.		#
+# Possible values: rust, rust-nightly			#
+#_______________________________________________________#
+DEFAULT_VERSIONS+=RUST=rust
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# Prefer libressl for all things, build ports against security/libressl		#
+# libressl-devel is often too new for rust-nightly etc				#
+# FYI: security/cryptopp is just as important for many ports.			#
+#										#
+# April 24 2021:								#
+# libressl-devel is for some odd reason entirely incompatible with crypto tools	#
+#										#
+# SSL										#
+# Possible values: base, openssl, libressl, libressl-devel			#
+#_______________________________________________________________________________#
+DEFAULT_VERSIONS+=SSL=libressl
+
+###############################################################################################################################################################################################################################################################
+ 
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# Changes in general to config toggles			#
+#_______________________________________________________#
+
+OPTIONS_UNSET+=A4 APE APPLEDEV ARCHDEF ATLAS AVX AVX2 
+OPTIONS_UNSET+=BASH BONMIN BOOTSTRAP
+OPTIONS_UNSET+=CCL CHEESE CHINESE CHROMECAST CMUCL CPACK CPU_CLIP
+OPTIONS_UNSET+=DBUS DEBUG DEVD DTRACE 
+OPTIONS_UNSET+=ECL EMACS_KEYS ENCODINGS ETERSOFT
+OPTIONS_UNSET+=FAM FREERDP FRENCH 
+OPTIONS_UNSET+=GCRYPT GEOCLUE GEOIP GEOLOC GLX GNUTLS GNOMEUI GNOMEVFS GPERFTOOLS GPOD GPS GPSD GRAPHITE GVFS 
+OPTIONS_UNSET+=HAL HALD 
+OPTIONS_UNSET+=IMOBILE INOTIFY INTEGER_SAMPLES IPOD IPOPT
+OPTIONS_UNSET+=JACK JAPANESE
+OPTIONS_UNSET+=KOREAN 
+OPTIONS_UNSET+=LAPACK LDAP LIBBLURAY LIBEXECINFO LIBJTE LIBSIGSEGV LIRC LOCALE_DE LOCALE_RU 
+OPTIONS_UNSET+=MARS MDNS MDNSRESPONDER METRIC MHASH MTPFS MTPZ MUPDF 
+OPTIONS_UNSET+=NETTLE NLS NTSC NVIDIA NVIT NVTHREADS NVTT
+OPTIONS_UNSET+=OPENBLAS OPENCV 
+OPTIONS_UNSET+=PAL PERL_64BITINT PGSQL PSGHOSTSCRIPT PSHYBRID PULSEAUDIO PURPOSE 
+OPTIONS_UNSET+=Q8BIT QPOASES QTWEBENGINE 
+OPTIONS_UNSET+=RCC READLINE RUNROOT RUSSIAN RETEXTURE_FULL
+OPTIONS_UNSET+=SAGE SAMBA SASL SCFB SMB SKYDRIVE SNDIO SPEECHD SPEED STATIC 
+OPTIONS_UNSET+=TEST TOMCAT85 TOMCAT9 TPM
+OPTIONS_UNSET+=UPNP 
+OPTIONS_UNSET+=V4L 
+OPTIONS_UNSET+=WEBENGINE WIIMOTEDEV WIKI_PUBLISHER 
+OPTIONS_UNSET+=XBACKLIGHT 
+OPTIONS_UNSET+=ZSH
+
+
+OPTIONS_SET+=3DNOW 7ZIP 
+OPTIONS_SET+=A52 AALIB AAC ALLSTAGES ALSA ANY2DJVU AOM API APNG ARMOR ASM ASS AUDIO AUDIOCD AVAHI
+OPTIONS_SET+=BABEL BE_AMDGPU BEATPORT BE_NATIVE BOOST BROTLI BUNDLED_READLINE BZIP2
+OPTIONS_SET+=CA_BUNDLE CACA CAIRO CBLAS CDDA2MP3 CDDA2OGG CDDB CERTS CLANG CLEARTYPE CLIENT COLORD COMPFACE COMPILER_RT COINMP CONFIG CONTRIB CPU_OPTS CRAFTY CRYPTO CRYPTOPP CUPS CURL 
+OPTIONS_SET+=DCA DCRAW DESKTOPFILES DRILL DTS DUNSTIFY DVD DYNAMIC_ARCH DYNSIMD
+OPTIONS_SET+=EDITOR EGL ELMUSIC ELSOUND ENCHANT ETCSYMLINK EXAMPLES EXIV EXPAT EXR EXTRAFONTS EXTRAS EYECANDY
+OPTIONS_SET+=FAAC FAAD FAIRYMAX FETCHART FFMPEG FFTW FFTW3 FLAC FLANG FLITE FLUID FLUIDSYNTH FONTCONFIG FORTRAN FREETYPE FREI0R FRIBIDI 
+OPTIONS_SET+=GAME GECKO GHOSTSCRIPT GIR GLASSFISH GLX GM GMP GNUCHESS GNUPG2 GOEMON GOLD GSL GSTREAMER GST_PLUGINS GUESTADDITIONS 
+OPTIONS_SET+=HARFBUZZ HUNSPELL HYPRE 
+OPTIONS_SET+=ICONV ICS_VCAL ID3TAG IJS IMAGEMAGICK IO_PTR IPV6 IRRLICHT 
+OPTIONS_SET+=JASPER JAVA JPEG2000 JSON 
+OPTIONS_SET+=KF5 KNIGHTCAP
+OPTIONS_SET+=LADSPA LAME LARGE_STACK LASTFM LAUNCHER LCMS2 LHA LIBEDIT LIBEDIT_DL LIBFFI LIBPAPER LIBPLACEBO LIBPNG LIBRSVG2 LIBSSH2 LIBXML LIBYAML LIT LLD LLDB LLD_LINK LOCALE_EN LUAJIT LV2 LZ4 LZO 
+OPTIONS_SET+=MAD MAN MAN3 MANPAGE MANPAGES MATERIALX MFX MIDI MIKMOD MLIR MMX MNG_OPTIMIZE MODPLUG MONO MP3 MP3OGG MPG123 MPEG2 MPI MT32EMU MTP MULTILIB MULTIPLICITY MUSEPACK MUSIC MYSQL 
+OPTIONS_SET+=NCURSES NETLIB NETTLE NONFREE NOTIFY NUMPY 
+OPTIONS_SET+=OBJC OGG OGRE ONIGURUMA OPENAL OPENAL_DLOPEN OPENCL OPENGL OPENH264 OPENJADE OPENMP OPENMPI OPTIMIZE OPTIMIZED_CFLAGS OPUS OSS 
+OPTIONS_SET+=PANGO PANGOCAIRO PARALLEL_MARK PERL_MALLOC PETSC PHALANX PHYSFS PNG POPPLER PSPOPPLER PTHREADS PYCLANG PYGMENTS PYMALLOC PYSTEMMER
+OPTIONS_SET+=QT5 QT5AGGBACKEND 
+OPTIONS_SET+=RAR RDOFF REALRTSP RELEASE RELRO REMIX1 REMIX2 REMIX3 REMIX4 REPLAYGAIN RETEXTURE RHASH RTCPU RUNTIME 
+OPTIONS_SET+=SAMPLERATE SBCL SCHROEDINGER SDL SDL1 SDL2 SDLCLIENT SDLGL SDL_AUDIO SDL_VIDEO SESSION_MGMT SHARED SHOUTCAST SIMD SIPHASH SKINS SLP SLURM SMPEG SNAPPY SOLUTIONS SOUND SOUNDTOUCH SPEEX SQLITE SSE SSE2 SSH STARTUP SUITESPARSE SVG SYSTEM_ZLIB 
+OPTIONS_SET+=TAGLIB TAGSOUP TCL THEMES THEORA THREADS TIDYHTML5 TIMIDITYPLUS TKINTER TOC2MP3 TWOLAME TZDATA TZUPDATE 
+OPTIONS_SET+=UDEV 
+OPTIONS_SET+=VAAPI VALA VDPAU VIDEOREC VIEWER VKD3D VLC VOICE VORBIS VPX VULKAN 
+OPTIONS_SET+=WATCHDOG WAVPACK WAYLAND WINEMAKER WXGTK 
+OPTIONS_SET+=X11 X264 X265 XCB XGLK XINERAMA 
+OPTIONS_SET+=YAML 
+OPTIONS_SET+=ZIP ZIPPY ZLIB ZSTD ZVBI
+## added for vlc, check if other option elsewhere triggered too.
+OPTIONS_SET+=KATE
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+#  * Openblas, Netlib (cblas), and Atlas are all options for math routines.				#
+#  * cblas seems to be ovewhelmingly used with games, and by py-numpy.					#
+#    therefore set to prefer cblas and netlib								#
+#													#
+#  * qt-location is problematic and depended upon by qt-webengine					#
+#													#
+#  * egl purported better and more supported than glx							#
+#													#
+# libedit is BSD and lighter while readline is gpl/gnu -- better to use bundled readline than as port	#
+#													#
+#  * rhash is MIT, gcrypt is gnu/gpl, mhash is lgpl							#
+#													#
+#  * MTPFS and MTPZ are related to accessing mobile devices such as their internal storage.		#
+#_______________________________________________________________________________________________________#
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+#  processor instructions support						#
+#										#
+#   older AMD processors do not have AVX or AVX2				#
+#   https://en.wikipedia.org/wiki/Advanced_Vector_Extensions#CPUs_with_AVX2	#
+#   AMD does have SSE2								#
+#   newer AMD processors do not have 3dNow					#
+#_______________________________________________________________________________#
+
+
+#############################################        #######   #######   #######   ######   ######
+####                                     ####      #######   #######   #######   ######   ######  
+####  an UNSET always overrides a SET    ####    #######   #######   ######    ######   ######    
+####                                     ####      #######   #######   #######   ######   ######  
+#############################################        #######   #######   #######   ######   ######
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# Flavored ports -- this works as expected				#
+#_______________________________________________________________________#
+
+.if ${.CURDIR:M*/ports/security/libressl-devel}
+  #FLAVOR=libtls
+  FLAVOR=default
+.endif
+
+.if ${.CURDIR:M*/ports/devel/git}
+  FLAVOR=tiny
+.endif
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# Flavored ports end							#
+#_______________________________________________________________________#
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# Static needed for use with poudriere -- 		#
+# revisit the memcached option when not experimental	#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/devel/ccache}
+  NO_CCACHE=yes
+  WITH_CCACHE_BUILD=no
+.endif
+.if ${.CURDIR:M*/ports/devel/ccache}
+  OPTIONS_UNSET=DOCS
+  OPTIONS_SET=CLANGLINK STATIC LLVMLINK
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# force pkg to have default: DOCS			#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/devel/json-glib}
+OPTIONS_SET+=DOCS
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# force json-glib proper config for clutter dependency	#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/devel/json-glib}
+OPTIONS_SET+=GIR
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# zziplib has trouble with sdl?				#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/devel/zziplib}
+  OPTIONS_UNSET+=SDL
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# install sources					#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/graphics/drm-fbsd13-kmod}
+  OPTIONS_SET+=SOURCE
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# soundtouch - openmp incompatible at present		#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/audio/soundtouch}
+  OPTIONS_UNSET+=OPENMP
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# slurm-wlm - trouble with HDF5				#
+# fails if hdf5 is enabled and was built with CXX 	#
+# circular dependency if hdf5 uses PARALLEL instead	#
+# all other options build fine so are set.		#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/sysutils/slurm-wlm}
+  OPTIONS_SET+=CURL DOCS GUI HWLOC IPMI MYSQL RRD
+  OPTIONS_UNSET+=HDF5
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# hdf5 circular dependency caused by PARALLEL option	#
+# radio button so should define both as appropriate	#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/science/hdf5}
+  OPTIONS_SET+=CXX
+  OPTIONS_UNSET+=PARALLEL
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# fontforge config					#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/print/fontforge}
+  OPTIONS_UNSET+=GTK3
+  OPTIONS_SET+=READLINE FREETYPE X11
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# freetype2 config					#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/print/freetype2}
+  OPTIONS_UNSET+=DEBUG
+  OPTIONS_SET+=V38 V40 TABLE_VALIDATION
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# mysql SASL for client not needed - connections local	#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/databases/mysql80-client}
+  OPTIONS_UNSET+=SASLCLIENT
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# cockatrice -- mysql fails to build server needs too	#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/games/cockatrice}
+  OPTIONS_UNSET+=MYSQL SERVEATRICE
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# net-snmp config					#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/net-mgmt/net-snmp}
+  OPTIONS_SET+=MFD_REWRITES TKMIB
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# ode adjustments					#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/devel/ode}
+  OPTIONS_UNSET+=GIMPACT OU
+  OPTIONS_SET+=DOUBLE
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# exult radio conflict fix				#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/games/exult}
+  OPTIONS_UNSET+=SDL1
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# heretic radio conflict fix				#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/games/heretic}
+  OPTIONS_UNSET+=X11 SDL
+  OPTIONS_SET+=FASTX11
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# uhexen2 radio conflict fix				#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/games/uhexen2}
+  OPTIONS_UNSET+=MAD
+.endif
+
+ 
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# instead radio conflict fix				#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/games/instead}
+  OPTIONS_UNSET+=SDL
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# espeak radio conflict fix				#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/audio/espeak}
+  OPTIONS_UNSET+=PORTAUDIO PULSEAUDIO
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# love luajit conflict 					#
+#_______________________________________________________#
+
+#.if ${.CURDIR:M*/ports/devel/love}
+#  OPTIONS_UNSET+=LUAJIT
+#.endif
+.if ${.CURDIR:M*/ports/devel/love10}
+  OPTIONS_UNSET+=LUAJIT
+.endif
+#.if ${.CURDIR:M*/ports/devel/love*}
+#  OPTIONS_UNSET+=LUAJIT
+#.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# openoffice config					#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/editors/openoffice-4}
+  OPTIONS_UNSET+=MMEDIA GNOME GNOMEVFS
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# casadi build option failure				#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/math/casadi}
+  OPTIONS_UNSET+=CLANG
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# xorg-drivers configuration -- if scfb ticked		#
+# this causes scfb dependency and scfb being		#
+# available to load which prevents my AMD graphics 	#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/x11-drivers/xorg-drivers}
+  OPTIONS_SET+=AMDGPU ATI KEYBOARD LIBINPUT MOUSE VESA
+  OPTIONS_UNSET+=NV SCFB
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# If options MANPAGE set requires DOCS too		#
+# CPACK is experimental option right now.		#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/devel/cmake}
+  OPTIONS_UNSET=CPACK
+  OPTIONS_SET=DOCS MANPAGES
+.endif
+.if ${.CURDIR:M*/ports/devel/kf5-extra-cmake-modules}
+  OPTIONS_SET+=DOCS
+.endif
+.if ${.CURDIR:M*/ports/devel/ncurses}
+  OPTIONS_SET+=DOCS PROFILE
+.endif
+.if ${.CURDIR:M*/ports/graphics/waffle}
+  OPTIONS_SET+=DOCS
+.endif
+.if ${.CURDIR:M*/ports/devel/ocl-icd}
+  OPTIONS_SET+=DOCS
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# add some capabilities, all non-defaults, and		#
+# test removing fortran option to see what breaks	#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/math/coinmp}
+  OPTIONS_SET+=GLPK PARALLEL
+  OPTIONS_UNSET+=FORTRAN
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# libressl configuration				#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/security/libressl}
+  OPTIONS_SET+=MAN3 NC
+.endif
+.if ${.CURDIR:M*/ports/security/libressl-devel}
+  OPTIONS_SET+=MAN3 NC
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# gkrellm2 configuration -- needs client		#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/sysutils/gkrellm2}
+  OPTIONS_UNSET+=DOCS NLS NTLM OPENSSL
+  OPTIONS_SET+=CLIENT
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# en-hunspell configuration				#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/textproc/en-hunspell}
+  OPTIONS_SET+=CA_LARGE GB_IZE US_STANDARD
+  OPTIONS_UNSET+=CA_STANDARD GB_ISE GB_LARGE US_LARGE
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# hplip configuration					#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/print/hplip}
+  OPTIONS_SET+=SNMP X11
+  OPTIONS_UNSET+=FAX SCAN XSANE
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# chromium-bsu fix radio options			#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/games/chromium-bsu}
+  OPTIONS_UNSET+=OPENAL
+  OPTIONS_SET+=SDL_MIXER
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# gdb fix radio options					#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/devel/gdb}
+  OPTIONS_UNSET+=PORT_READLINE
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# openssh-portable config -- unset insecure option	#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/security/openssh-portable}
+  OPTIONS_UNSET+=NONECIPHER
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# sundials add blas support				#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/math/sundials}
+  OPTIONS_SET+=BLAS
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# better maxima config					#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/math/maxima}
+  OPTIONS_SET+=DOCS EXAMPLES MANPAGES NOUSERINIT TEST XMAXIMA
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# bad option name -- remove samba			#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/net/kdenetwork}
+  OPTIONS_UNSET+=FILESHARING
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# fix qtcurve radio selection				#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/x11-themes/qtcurve}
+  OPTIONS_SET+=GTK2 KF5
+  OPTIONS_UNSET+=QT5
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# bad audio radio selections -- remove audio support	#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/mail/faces}
+  OPTIONS_UNSET+=AUDIO NAS RPLAY SOX
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# fix pam conflict					#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/security/sudo}
+  OPTIONS_UNSET+=PAM
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# add claws-mail docs					#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/mail/claws-mail}
+  OPTIONS_SET+=DOCS
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# radio selector fix pinentry				#
+# choose default -- unset other make.conf options	#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/security/pinentry}
+  OPTIONS_SET+=TTY
+  OPTIONS_UNSET+=NCURSES FLTK GTK2 QT5 GNOME3
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# radio selector fix neon				#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/www/neon}
+  OPTIONS_SET+=EXPAT
+  OPTIONS_UNSET+=LIBXML
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# radio selector fix claws-mail-bogofilter		#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/mail/claws-mail-bogofilter}
+  OPTIONS_SET+=SQLITE
+  OPTIONS_UNSET+=BDB TC
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# good zbar defaults					#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/graphics/zbar}
+  OPTIONS_SET+=X11 V7
+  OPTIONS_UNSET+=GTK2 V4L V6
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# radio selector fix lua				#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/lang/lua5*}
+  OPTIONS_UNSET+=LIBEDIT
+.endif
+
+.if ${.CURDIR:M*/ports/lang/lua54}
+  OPTIONS_UNSET+=LIBEDIT
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# radio selector fix wildmidi				#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/audio/wildmidi}
+  OPTIONS_SET+=OSS
+  OPTIONS_UNSET+=ALSA OPENAL
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# radio selector fix glfw				#
+#_______________________________________________________#
+.if ${.CURDIR:M*/ports/graphics/glfw}
+  OPTIONS_SET+=WAYLAND
+  OPTIONS_UNSET+=X11
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# radio selector fix vkquake				#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/games/vkquake}
+  OPTIONS_SET+=MIKMOD
+  OPTIONS_UNSET+=MODPLUG XMP
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# rubygem -- take advantage of clang?			#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/devel/rubygem-multi_json}
+  OPTIONS_SET+=JSON
+  OPTIONS_UNSET+=JSON_PURE YAJL_RUBY
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# nss from mozilla purported faster and more featured than openSSL	#
+# https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/FAQ	#
+#_______________________________________________________________________#
+
+.if ${.CURDIR:M*/ports/devel/apr}
+  OPTIONS_SET+=NSS
+  OPTIONS_UNSET+=SSL
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# gimp help might be unique				#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/graphics/gimp}
+  OPTIONS_SET+=HELP
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# openSSL here is uncertain -- purports speedier	#
+# http://anrieff.net/ucbench/technical_qna.html		#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/archivers/libarchive}
+  OPTIONS_SET+=OPENSSL
+  OPTIONS_UNSET+=NETTLE
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# Cannot use libressl so second best is bundled.	#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/www/node12}
+  OPTIONS_SET+=BUNDLED_SSL
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# radio button conflicts these ports for these options	#
+# mpg123 purported to be speedier if given the choice	#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/audio/sdl_mixer}
+  OPTIONS_SET+=MIKMOD
+  OPTIONS_UNSET+=MODPLUG
+.endif
+
+.if ${.CURDIR:M*/ports/audio/sdl2_mixer}
+  OPTIONS_SET+=MIKMOD MPG123
+  OPTIONS_UNSET+=MODPLUG MAD
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# some odd reason doc causes issues? Weird		#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/sysutils/cdrtools}
+  OPTIONS_UNSET+=DOCS
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# Openoffice builds or pkg install; immediately cores.	#
+#_______________________________________________________#
+
+#WITH_DEBUG_PORTS+=${PKGORIGIN}
+
+WITH_DEBUG_PORTS+=editors/openoffice-devel
+WITH_DEBUG_PORTS+=editors/openoffice-4
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# samba option fails build and hal not needed		#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/devel/gnome-vfs}
+  OPTIONS_UNSET+=HAL SAMBA
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# docs fails build, manpages=docs, and bash not needed	#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/security/p11-kit}
+  OPTIONS_UNSET+=BASH
+  OPTIONS_UNSET+=DOCS
+  OPTIONS_UNSET+=MANPAGES
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# I do not use kerberos so none of them are needed      #
+# explicitly set GSSAPI_NONE				#
+#_______________________________________________________#
+
+OPTIONS_UNSET+=KERBEROS HEIMDAL MIT HEIMDAL_BASE KERB_GSSAPI GSSAPI_BASE GSSAPI_MIT GSSAPI_HEIMDAL
+OPTIONS_SET+=GSSAPI_NONE
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# dependents of curl need TLS_SRP for some things?	#
+# that option requires openssl or gnutls		#
+# choose gnutls but libssh2 option requires openssl	#
+# and TPM causes dependency loop due to gnutls		#
+# gnutls causes dependency on nettle which conflicts	#
+# with libressl-devel-libtls and tls-srp fails so then	#
+# NSS is compromise which works, solves conflicts.	#
+#							#
+# libetpan needs something this config removes		#
+# which causes claws-mail to fail to build		#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/ftp/curl}
+#  OPTIONS_UNSET+=GNUTLS LIBSSH2 TLS_SRP
+  OPTIONS_UNSET+=LIBSSH2
+#  OPTIONS_SET+=NSS RESOLV TLS_SRP
+  OPTIONS_SET+=GNTTLS RESOLV TLS_SRP
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# some things require gnutls built with P11KIT option	#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/security/gnutls}
+  OPTIONS_UNSET+=TPM
+  OPTIONS_SET+=P11KIT
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# some things cannot handle libressl			#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/net/krdc}
+  OPTIONS_UNSET+=FREERDP
+.endif
+
+.if ${.CURDIR:M*/ports/net/remotebox}
+  OPTIONS_UNSET+=FREERDP
+.endif
+
+.if ${.CURDIR:M*/ports/net/remina-plugins}
+  OPTIONS_UNSET+=RDP
+.endif
+
+.if ${.CURDIR:M*/ports/net/guacamole-server}
+  OPTIONS_UNSET+=RDP
+.endif
+
+.if ${.CURDIR:M*/ports/net/vinagre}
+  OPTIONS_UNSET+=RDP
+.endif
+
+.if ${.CURDIR:M*/ports/www/node}
+  OPTIONS_SET+=BUNDLED_SSL
+.endif
+
+.if ${.CURDIR:M*/ports/devel/qca}
+  OPTIONS_UNSET+=OPENSSL
+.endif
+
+.if ${.CURDIR:M*/ports/dns/ldns}
+  OPTIONS_UNSET+=DANETAUSAGE GOST
+  OPTIONS_SET+=DRILL
+.endif
+
+.if ${.CURDIR:M*/ports/dns/unbound}
+  OPTIONS_UNSET+=ECDSA GOST EVAPI
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# npm -- node package manager, keep synced with node	#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/www/npm}
+  OPTIONS_SET+=NODE
+  OPTIONS_UNSET+=NODE10 NODE12
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# This adds samba support that I don't use		#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/net/kdenetwork}
+  OPTIONS_UNSET+=FILESHARING
+.endif
+
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# Optimizing and profiling fails build? and dbus too?	#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/www/firefox}
+  OPTIONS_UNSET+=PROFILE OPTIMIZED_CFLAGS DBUS
+.endif
+
+ 
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# does firefox issue with libressl via libevent remain?	#
+# mysql needs libevent to have openssl			#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/devel/libevent}
+#  OPTIONS_UNSET+=OPENSSL
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# Minetest special adjustments test			#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/games/minetest}
+  OPTIONS_SET+=CURL DOCS EXAMPLES LUAJIT SOUND CLIENT SERVER FREETYPE
+  OPTIONS_UNSET+=NCURSES NLS PGSQL LEVELDB REDIS SPATIAL
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# override defaults for llvm?				#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/devel/llvm*}
+  OPTIONS_UNSET+=BE_FREEBSD BE_STANDARD
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# rust-nightly fails build -- newer libressl causes it	#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/lang/rust-nightly}
+  OPTIONS_UNSET+=GDB
+## maybe firefox needs webassembly?
+  OPTIONS_SET+=WASM
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# match rust-nightly					#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/lang/rust}
+  OPTIONS_UNSET+=GDB
+## maybe firefox needs webassembly?
+  OPTIONS_SET+=WASM
+.endif
+
+# python27 (and other things) fails with libressl-devel
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# qscintilla oddness					#
+# py-qt4 items needed API unset				#
+# defunct -- removed					#
+#_______________________________________________________#
+ 
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# mDNSResponder vs Avahi choose Avahi			#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/net/ntp-devel}
+ CONFLICTS+=avahi*
+.endif
+.if ${.CURDIR:M*/ports/audio/murmur}
+ CONFLICTS+=avahi*
+.endif
+
+.if ${.CURDIR:M*/ports/devel/android-tools-adb}
+  OPTIONS_UNSET+=MDNSRESPONDER
+.endif
+
+.if ${.CURDIR:M*/ports/audio/shairplay}
+  OPTIONS_UNSET+=MDNSRESPONDER
+.endif
+
+.if ${.CURDIR:M*/ports/audio/xmms2}
+  OPTIONS_UNSET+=MDNS_APPLE
+  OPTIONS_SET+=MDNS_AVAHI
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# Fix circular dependency loops				#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/net/avahi}
+  OPTIONS_UNSET+=GTK
+.endif
+
+.if ${.CURDIR:M*/ports/print/cups}
+  OPTIONS_UNSET+=AVAHI GNUTLS
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# ImageMagick6 vs 7 conflict -- most use V6		#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/graphics/zbar}
+  OPTIONS_UNSET+=V7
+  OPTIONS_SET+=V6
+.endif
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# damned wayland additions				#
+# clearly this is love-hate for the system and have 	#
+# flip-flopped on this.					#
+#_______________________________________________________#
+
+.if ${.CURDIR:M*/ports/graphics/mesa-dri}
+#    OPTIONS_UNSET+=WAYLAND
+    OPTIONS_SET+=WAYLAND
+.endif
+.if ${.CURDIR:M*/ports/graphics/mesa-libs}
+#    OPTIONS_UNSET+=WAYLAND
+    OPTIONS_SET+=WAYLAND
+.endif
+.if ${.CURDIR:M*/ports/devel/sdl20}
+#    OPTIONS_UNSET+=VIDEO_WAYLAND
+    OPTIONS_SET+=VIDEO_WAYLAND
+.endif
+
+
+# ---------------------------------------------<  End user additions and modifications >--------------------------------------------- #
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+# Automatically added portconf section -- DON'T TOUCH	#
+#_______________________________________________________#
+
+# Begin portconf settings
+# Do not touch these lines
+.if !empty(.CURDIR:M/usr/ports*) && exists(/usr/local/libexec/portconf)
+_PORTCONF!=/usr/local/libexec/portconf
+.if ${_PORTCONF} != "|"
+.for i in ${_PORTCONF:S/^|//:S/|/ /g}
+${i:C/^([^=]*)=.*/\1/}=${i:C/^[^=]*=//:S/%/ /g}
+.endfor
+.endif
+.endif
+# End portconf settings
+WITH_CCACHE_BUILD=yes
+CCACHE_DIR=/root/.ccache
+NO_CCACHE_DEPEND=1
+CCACHE_WRAPPER_PATH=	/ccache/libexec/ccache
+#### /usr/ports/Mk/Scripts/ports_env.sh ####
+_CCVERSION_921dbbb2=FreeBSD clang version 11.0.1 (git@github.com:llvm/llvm-project.git llvmorg-11.0.1-0-g43ff75f2c3fe) Target: x86_64-unknown-freebsd13.0 Thread model: posix InstalledDir: /usr/bin
+_ALTCCVERSION_921dbbb2=none
+_CXXINTERNAL_acaad9ca=FreeBSD clang version 11.0.1 (git@github.com:llvm/llvm-project.git llvmorg-11.0.1-0-g43ff75f2c3fe) Target: x86_64-unknown-freebsd13.0 Thread model: posix InstalledDir: /usr/bin "/usr/bin/ld" "--eh-frame-hdr" "-dynamic-linker" "/libexec/ld-elf.so.1" "--hash-style=both" "--enable-new-dtags" "-o" "a.out" "/usr/lib/crt1.o" "/usr/lib/crti.o" "/usr/lib/crtbegin.o" "-L/usr/lib" "/dev/null" "-lc++" "-lm" "-lgcc" "--as-needed" "-lgcc_s" "--no-as-needed" "-lc" "-lgcc" "--as-needed" "-lgcc_s" "--no-as-needed" "/usr/lib/crtend.o" "/usr/lib/crtn.o"
+CC_OUTPUT_921dbbb2_58173849=yes
+CC_OUTPUT_921dbbb2_9bdba57c=yes
+CC_OUTPUT_921dbbb2_6a4fe7f5=yes
+CC_OUTPUT_921dbbb2_6bcac02b=yes
+CC_OUTPUT_921dbbb2_67d20829=yes
+CC_OUTPUT_921dbbb2_bfa62e83=yes
+CC_OUTPUT_921dbbb2_f0b4d593=yes
+CC_OUTPUT_921dbbb2_308abb44=yes
+CC_OUTPUT_921dbbb2_f00456e5=yes
+CC_OUTPUT_921dbbb2_65ad290d=yes
+CC_OUTPUT_921dbbb2_f2776b26=yes
+CC_OUTPUT_921dbbb2_b2657cc3=yes
+CC_OUTPUT_921dbbb2_380987f7=yes
+CC_OUTPUT_921dbbb2_160933ec=yes
+CC_OUTPUT_921dbbb2_fb62803b=yes
+_OBJC_CCVERSION_921dbbb2=FreeBSD clang version 11.0.1 (git@github.com:llvm/llvm-project.git llvmorg-11.0.1-0-g43ff75f2c3fe) Target: x86_64-unknown-freebsd13.0 Thread model: posix InstalledDir: /usr/bin
+_OBJC_ALTCCVERSION_921dbbb2=none
+ARCH=amd64
+OPSYS=FreeBSD
+_OSRELEASE=13.0-STABLE
+OSREL=13.0
+OSVERSION=1300500
+PYTHONBASE=/usr/local
+HAVE_COMPAT_IA32_KERN=YES
+_SMP_CPUS=6
+CONFIGURE_MAX_CMD_LEN=524288
+HAVE_PORTS_ENV=1
+#### Misc Poudriere ####
+GID=0
+UID=0
+---End make.conf---
+--Resource limits--
+cpu time               (seconds, -t)  unlimited
+file size           (512-blocks, -f)  unlimited
+data seg size           (kbytes, -d)  33554432
+stack size              (kbytes, -s)  524288
+core file size      (512-blocks, -c)  unlimited
+max memory size         (kbytes, -m)  unlimited
+locked memory           (kbytes, -l)  unlimited
+max user processes              (-u)  34232
+open files                      (-n)  1024
+virtual mem size        (kbytes, -v)  unlimited
+swap limit              (kbytes, -w)  unlimited
+socket buffer size       (bytes, -b)  unlimited
+pseudo-terminals                (-p)  unlimited
+kqueues                         (-k)  unlimited
+umtx shared locks               (-o)  unlimited
+--End resource limits--
+=======================<phase: check-sanity   >============================
+===>  License APACHE20 BSD3CLAUSE accepted by the user
+===========================================================================
+=======================<phase: pkg-depends    >============================
+===>   py39-cryptography-3.3.2 depends on file: /usr/local/sbin/pkg - not found
+===>   Installing existing package /packages/All/pkg-1.16.3.txz
+[13amd64-default-job-01] Installing pkg-1.16.3...
+[13amd64-default-job-01] Extracting pkg-1.16.3: .......... done
+===>   py39-cryptography-3.3.2 depends on file: /usr/local/sbin/pkg - found
+===>   Returning to build of py39-cryptography-3.3.2
+===========================================================================
+=======================<phase: fetch-depends  >============================
+===========================================================================
+=======================<phase: fetch          >============================
+===>  License APACHE20 BSD3CLAUSE accepted by the user
+===> Fetching all distfiles required by py39-cryptography-3.3.2 for building
+===========================================================================
+=======================<phase: checksum       >============================
+===>  License APACHE20 BSD3CLAUSE accepted by the user
+===> Fetching all distfiles required by py39-cryptography-3.3.2 for building
+=> SHA256 Checksum OK for cryptography-3.3.2.tar.gz.
+===========================================================================
+=======================<phase: extract-depends>============================
+===========================================================================
+=======================<phase: extract        >============================
+===>  License APACHE20 BSD3CLAUSE accepted by the user
+===> Fetching all distfiles required by py39-cryptography-3.3.2 for building
+===>  Extracting for py39-cryptography-3.3.2
+=> SHA256 Checksum OK for cryptography-3.3.2.tar.gz.
+===========================================================================
+=======================<phase: patch-depends  >============================
+===========================================================================
+=======================<phase: patch          >============================
+===>  Patching for py39-cryptography-3.3.2
+===========================================================================
+=======================<phase: build-depends  >============================
+===>   py39-cryptography-3.3.2 depends on package: py39-cffi>=1.8 - not found
+===>   Installing existing package /packages/All/py39-cffi-1.14.5.txz
+[13amd64-default-job-01] Installing py39-cffi-1.14.5...
+[13amd64-default-job-01] `-- Installing libffi-3.3_1...
+[13amd64-default-job-01] |   `-- Installing indexinfo-0.3.1...
+[13amd64-default-job-01] |   `-- Extracting indexinfo-0.3.1: .... done
+[13amd64-default-job-01] `-- Extracting libffi-3.3_1: .......... done
+[13amd64-default-job-01] `-- Installing py39-pycparser-2.20...
+[13amd64-default-job-01] |   `-- Installing py39-setuptools-44.0.0_1...
+[13amd64-default-job-01] |   | `-- Installing python39-3.9.4...
+[13amd64-default-job-01] |   |   `-- Installing libressl-3.3.3...
+[13amd64-default-job-01] |   |   `-- Extracting libressl-3.3.3: .......... done
+[13amd64-default-job-01] |   |   `-- Installing readline-8.1.0...
+[13amd64-default-job-01] |   |   `-- Extracting readline-8.1.0: .......... done
+[13amd64-default-job-01] |   | `-- Extracting python39-3.9.4: .......... done
+[13amd64-default-job-01] |   `-- Extracting py39-setuptools-44.0.0_1: .......... done
+[13amd64-default-job-01] `-- Extracting py39-pycparser-2.20: .......... done
+[13amd64-default-job-01] Extracting py39-cffi-1.14.5: .......... done
+=====
+Message from python39-3.9.4:
+
+--
+Note that some standard Python modules are provided as separate ports
+as they require additional dependencies. They are available as:
+
+py39-gdbm       databases/py-gdbm@py39
+py39-sqlite3    databases/py-sqlite3@py39
+py39-tkinter    x11-toolkits/py-tkinter@py39
+===>   py39-cryptography-3.3.2 depends on package: py39-cffi>=1.8 - found
+===>   Returning to build of py39-cryptography-3.3.2
+===>   py39-cryptography-3.3.2 depends on package: py39-setuptools>0 - found
+===>   py39-cryptography-3.3.2 depends on file: /usr/local/bin/python3.9 - found
+===>   py39-cryptography-3.3.2 depends on file: /usr/local/lib/libcrypto.so.46 - found
+===========================================================================
+=======================<phase: lib-depends    >============================
+===========================================================================
+=======================<phase: configure      >============================
+===>  Configuring for py39-cryptography-3.3.2
+running config
+===========================================================================
+=======================<phase: build          >============================
+===>  Building for py39-cryptography-3.3.2
+running build
+running build_py
+creating build
+creating build/lib.freebsd-13.0-STABLE-amd64-3.9
+creating build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography
+copying src/cryptography/__init__.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography
+copying src/cryptography/utils.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography
+copying src/cryptography/fernet.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography
+copying src/cryptography/exceptions.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography
+copying src/cryptography/__about__.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography
+creating build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/x509
+copying src/cryptography/x509/__init__.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/x509
+copying src/cryptography/x509/base.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/x509
+copying src/cryptography/x509/name.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/x509
+copying src/cryptography/x509/certificate_transparency.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/x509
+copying src/cryptography/x509/extensions.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/x509
+copying src/cryptography/x509/ocsp.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/x509
+copying src/cryptography/x509/general_name.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/x509
+copying src/cryptography/x509/oid.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/x509
+creating build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat
+copying src/cryptography/hazmat/__init__.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat
+copying src/cryptography/hazmat/_oid.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat
+copying src/cryptography/hazmat/_der.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat
+creating build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/primitives
+copying src/cryptography/hazmat/primitives/cmac.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/primitives
+copying src/cryptography/hazmat/primitives/__init__.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/primitives
+copying src/cryptography/hazmat/primitives/hmac.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/primitives
+copying src/cryptography/hazmat/primitives/padding.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/primitives
+copying src/cryptography/hazmat/primitives/poly1305.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/primitives
+copying src/cryptography/hazmat/primitives/keywrap.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/primitives
+copying src/cryptography/hazmat/primitives/hashes.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/primitives
+copying src/cryptography/hazmat/primitives/constant_time.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/primitives
+creating build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/backends
+copying src/cryptography/hazmat/backends/__init__.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/backends
+copying src/cryptography/hazmat/backends/interfaces.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/backends
+creating build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/bindings
+copying src/cryptography/hazmat/bindings/__init__.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/bindings
+creating build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/primitives/kdf
+copying src/cryptography/hazmat/primitives/kdf/__init__.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/primitives/kdf
+copying src/cryptography/hazmat/primitives/kdf/kbkdf.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/primitives/kdf
+copying src/cryptography/hazmat/primitives/kdf/x963kdf.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/primitives/kdf
+copying src/cryptography/hazmat/primitives/kdf/scrypt.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/primitives/kdf
+copying src/cryptography/hazmat/primitives/kdf/concatkdf.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/primitives/kdf
+copying src/cryptography/hazmat/primitives/kdf/pbkdf2.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/primitives/kdf
+copying src/cryptography/hazmat/primitives/kdf/hkdf.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/primitives/kdf
+creating build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/primitives/asymmetric
+copying src/cryptography/hazmat/primitives/asymmetric/x25519.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/primitives/asymmetric
+copying src/cryptography/hazmat/primitives/asymmetric/ed448.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/primitives/asymmetric
+copying src/cryptography/hazmat/primitives/asymmetric/__init__.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/primitives/asymmetric
+copying src/cryptography/hazmat/primitives/asymmetric/rsa.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/primitives/asymmetric
+copying src/cryptography/hazmat/primitives/asymmetric/padding.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/primitives/asymmetric
+copying src/cryptography/hazmat/primitives/asymmetric/dh.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/primitives/asymmetric
+copying src/cryptography/hazmat/primitives/asymmetric/ec.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/primitives/asymmetric
+copying src/cryptography/hazmat/primitives/asymmetric/dsa.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/primitives/asymmetric
+copying src/cryptography/hazmat/primitives/asymmetric/x448.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/primitives/asymmetric
+copying src/cryptography/hazmat/primitives/asymmetric/utils.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/primitives/asymmetric
+copying src/cryptography/hazmat/primitives/asymmetric/ed25519.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/primitives/asymmetric
+creating build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/primitives/serialization
+copying src/cryptography/hazmat/primitives/serialization/ssh.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/primitives/serialization
+copying src/cryptography/hazmat/primitives/serialization/__init__.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/primitives/serialization
+copying src/cryptography/hazmat/primitives/serialization/base.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/primitives/serialization
+copying src/cryptography/hazmat/primitives/serialization/pkcs12.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/primitives/serialization
+copying src/cryptography/hazmat/primitives/serialization/pkcs7.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/primitives/serialization
+creating build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/primitives/twofactor
+copying src/cryptography/hazmat/primitives/twofactor/hotp.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/primitives/twofactor
+copying src/cryptography/hazmat/primitives/twofactor/__init__.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/primitives/twofactor
+copying src/cryptography/hazmat/primitives/twofactor/totp.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/primitives/twofactor
+copying src/cryptography/hazmat/primitives/twofactor/utils.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/primitives/twofactor
+creating build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/primitives/ciphers
+copying src/cryptography/hazmat/primitives/ciphers/algorithms.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/primitives/ciphers
+copying src/cryptography/hazmat/primitives/ciphers/__init__.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/primitives/ciphers
+copying src/cryptography/hazmat/primitives/ciphers/base.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/primitives/ciphers
+copying src/cryptography/hazmat/primitives/ciphers/aead.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/primitives/ciphers
+copying src/cryptography/hazmat/primitives/ciphers/modes.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/primitives/ciphers
+creating build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/backends/openssl
+copying src/cryptography/hazmat/backends/openssl/x25519.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/backends/openssl
+copying src/cryptography/hazmat/backends/openssl/cmac.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/backends/openssl
+copying src/cryptography/hazmat/backends/openssl/decode_asn1.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/backends/openssl
+copying src/cryptography/hazmat/backends/openssl/ed448.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/backends/openssl
+copying src/cryptography/hazmat/backends/openssl/x509.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/backends/openssl
+copying src/cryptography/hazmat/backends/openssl/__init__.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/backends/openssl
+copying src/cryptography/hazmat/backends/openssl/hmac.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/backends/openssl
+copying src/cryptography/hazmat/backends/openssl/ciphers.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/backends/openssl
+copying src/cryptography/hazmat/backends/openssl/rsa.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/backends/openssl
+copying src/cryptography/hazmat/backends/openssl/ocsp.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/backends/openssl
+copying src/cryptography/hazmat/backends/openssl/dh.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/backends/openssl
+copying src/cryptography/hazmat/backends/openssl/aead.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/backends/openssl
+copying src/cryptography/hazmat/backends/openssl/encode_asn1.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/backends/openssl
+copying src/cryptography/hazmat/backends/openssl/ec.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/backends/openssl
+copying src/cryptography/hazmat/backends/openssl/backend.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/backends/openssl
+copying src/cryptography/hazmat/backends/openssl/poly1305.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/backends/openssl
+copying src/cryptography/hazmat/backends/openssl/dsa.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/backends/openssl
+copying src/cryptography/hazmat/backends/openssl/x448.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/backends/openssl
+copying src/cryptography/hazmat/backends/openssl/utils.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/backends/openssl
+copying src/cryptography/hazmat/backends/openssl/hashes.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/backends/openssl
+copying src/cryptography/hazmat/backends/openssl/ed25519.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/backends/openssl
+creating build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/bindings/openssl
+copying src/cryptography/hazmat/bindings/openssl/__init__.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/bindings/openssl
+copying src/cryptography/hazmat/bindings/openssl/_conditional.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/bindings/openssl
+copying src/cryptography/hazmat/bindings/openssl/binding.py -> build/lib.freebsd-13.0-STABLE-amd64-3.9/cryptography/hazmat/bindings/openssl
+running egg_info
+writing src/cryptography.egg-info/PKG-INFO
+writing dependency_links to src/cryptography.egg-info/dependency_links.txt
+writing requirements to src/cryptography.egg-info/requires.txt
+writing top-level names to src/cryptography.egg-info/top_level.txt
+reading manifest file 'src/cryptography.egg-info/SOURCES.txt'
+reading manifest template 'MANIFEST.in'
+no previously-included directories found matching 'docs/_build'
+warning: no previously-included files found matching 'vectors'
+warning: no previously-included files matching '*' found under directory 'vectors'
+warning: no previously-included files matching '*' found under directory '.github'
+warning: no previously-included files found matching 'release.py'
+warning: no previously-included files found matching '.coveragerc'
+warning: no previously-included files found matching 'codecov.yml'
+warning: no previously-included files found matching '.readthedocs.yml'
+warning: no previously-included files found matching 'dev-requirements.txt'
+warning: no previously-included files found matching 'rtd-requirements.txt'
+warning: no previously-included files found matching 'tox.ini'
+warning: no previously-included files matching '*' found under directory '.zuul.d'
+warning: no previously-included files matching '*' found under directory '.zuul.playbooks'
+writing manifest file 'src/cryptography.egg-info/SOURCES.txt'
+running build_ext
+generating cffi module 'build/temp.freebsd-13.0-STABLE-amd64-3.9/_padding.c'
+creating build/temp.freebsd-13.0-STABLE-amd64-3.9
+generating cffi module 'build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c'
+building '_openssl' extension
+creating build/temp.freebsd-13.0-STABLE-amd64-3.9/build
+creating build/temp.freebsd-13.0-STABLE-amd64-3.9/build/temp.freebsd-13.0-STABLE-amd64-3.9
+cc -Wno-unused-result -Wsign-compare -Wunreachable-code -DNDEBUG -O2 -pipe -fstack-protector-strong -fno-strict-aliasing -O2 -pipe -I/usr/local/include -fstack-protector-strong -fno-strict-aliasing -fPIC -I/usr/local/include/python3.9 -c build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c -o build/temp.freebsd-13.0-STABLE-amd64-3.9/build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.o -Wconversion -Wno-error=sign-conversion
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:2172:19: error: expected identifier or '('
+static const long SSL_OP_NO_DTLSv1 = 0;
+                  ^
+/usr/local/include/openssl/ssl.h:524:29: note: expanded from macro 'SSL_OP_NO_DTLSv1'
+#define SSL_OP_NO_DTLSv1                                0x40000000L
+                                                        ^
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:2173:19: error: expected identifier or '('
+static const long SSL_OP_NO_DTLSv1_2 = 0;
+                  ^
+/usr/local/include/openssl/ssl.h:525:31: note: expanded from macro 'SSL_OP_NO_DTLSv1_2'
+#define SSL_OP_NO_DTLSv1_2                              0x80000000L
+                                                        ^
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:2385:39: warning: implicit conversion changes signedness: 'int' to 'unsigned long' [-Wsign-conversion]
+        memcpy(buf, st->password, st->length);
+        ~~~~~~                    ~~~~^~~~~~
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:10218:10: warning: returning 'const BIO_METHOD *' (aka 'const struct bio_method_st *') from a function with result type 'BIO_METHOD *' (aka 'struct bio_method_st *') discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+  return BIO_s_datagram();
+         ^~~~~~~~~~~~~~~~
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:10229:12: warning: assigning to 'BIO_METHOD *' (aka 'struct bio_method_st *') from 'const BIO_METHOD *' (aka 'const struct bio_method_st *') discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+  { result = BIO_s_datagram(); }
+           ^ ~~~~~~~~~~~~~~~~
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:10244:10: warning: returning 'const BIO_METHOD *' (aka 'const struct bio_method_st *') from a function with result type 'BIO_METHOD *' (aka 'struct bio_method_st *') discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+  return BIO_s_mem();
+         ^~~~~~~~~~~
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:10255:12: warning: assigning to 'BIO_METHOD *' (aka 'struct bio_method_st *') from 'const BIO_METHOD *' (aka 'const struct bio_method_st *') discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+  { result = BIO_s_mem(); }
+           ^ ~~~~~~~~~~~
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:26062:10: warning: returning 'const Cryptography_STACK_OF_X509 *' (aka 'const struct stack_st_X509 *') from a function with result type 'Cryptography_STACK_OF_X509 *' (aka 'struct stack_st_X509 *') discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+  return OCSP_resp_get0_certs(x0);
+         ^~~~~~~~~~~~~~~~~~~~~~~~
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:26085:12: warning: assigning to 'Cryptography_STACK_OF_X509 *' (aka 'struct stack_st_X509 *') from 'const Cryptography_STACK_OF_X509 *' (aka 'const struct stack_st_X509 *') discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+  { result = OCSP_resp_get0_certs(x0); }
+           ^ ~~~~~~~~~~~~~~~~~~~~~~~~
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:31441:10: warning: implicit conversion changes signedness: 'long' to 'unsigned long' [-Wsign-conversion]
+  return SSL_CTX_add_extra_chain_cert(x0, x1);
+  ~~~~~~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/local/include/openssl/ssl.h:1232:2: note: expanded from macro 'SSL_CTX_add_extra_chain_cert'
+        SSL_CTX_ctrl(ctx, SSL_CTRL_EXTRA_CHAIN_CERT, 0, (char *)x509)
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:31479:14: warning: implicit conversion changes signedness: 'long' to 'unsigned long' [-Wsign-conversion]
+  { result = SSL_CTX_add_extra_chain_cert(x0, x1); }
+           ~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/local/include/openssl/ssl.h:1232:2: note: expanded from macro 'SSL_CTX_add_extra_chain_cert'
+        SSL_CTX_ctrl(ctx, SSL_CTRL_EXTRA_CHAIN_CERT, 0, (char *)x509)
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:31620:10: warning: implicit conversion changes signedness: 'long' to 'unsigned long' [-Wsign-conversion]
+  return SSL_CTX_clear_mode(x0, x1);
+  ~~~~~~ ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/local/include/openssl/ssl.h:594:2: note: expanded from macro 'SSL_CTX_clear_mode'
+        SSL_CTX_ctrl((ctx),SSL_CTRL_CLEAR_MODE,(op),NULL)
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:31620:33: warning: implicit conversion changes signedness: 'unsigned long' to 'long' [-Wsign-conversion]
+  return SSL_CTX_clear_mode(x0, x1);
+         ~~~~~~~~~~~~~~~~~~~~~~~^~~
+/usr/local/include/openssl/ssl.h:594:42: note: expanded from macro 'SSL_CTX_clear_mode'
+        SSL_CTX_ctrl((ctx),SSL_CTRL_CLEAR_MODE,(op),NULL)
+        ~~~~~~~~~~~~                            ^~
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:31653:14: warning: implicit conversion changes signedness: 'long' to 'unsigned long' [-Wsign-conversion]
+  { result = SSL_CTX_clear_mode(x0, x1); }
+           ~ ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/local/include/openssl/ssl.h:594:2: note: expanded from macro 'SSL_CTX_clear_mode'
+        SSL_CTX_ctrl((ctx),SSL_CTRL_CLEAR_MODE,(op),NULL)
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:31653:37: warning: implicit conversion changes signedness: 'unsigned long' to 'long' [-Wsign-conversion]
+  { result = SSL_CTX_clear_mode(x0, x1); }
+             ~~~~~~~~~~~~~~~~~~~~~~~^~~
+/usr/local/include/openssl/ssl.h:594:42: note: expanded from macro 'SSL_CTX_clear_mode'
+        SSL_CTX_ctrl((ctx),SSL_CTRL_CLEAR_MODE,(op),NULL)
+        ~~~~~~~~~~~~                            ^~
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:31668:10: warning: implicit conversion changes signedness: 'long' to 'unsigned long' [-Wsign-conversion]
+  return SSL_CTX_clear_options(x0, x1);
+  ~~~~~~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/local/include/openssl/ssl.h:581:2: note: expanded from macro 'SSL_CTX_clear_options'
+        SSL_CTX_ctrl((ctx),SSL_CTRL_CLEAR_OPTIONS,(op),NULL)
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:31668:36: warning: implicit conversion changes signedness: 'unsigned long' to 'long' [-Wsign-conversion]
+  return SSL_CTX_clear_options(x0, x1);
+         ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~
+/usr/local/include/openssl/ssl.h:581:45: note: expanded from macro 'SSL_CTX_clear_options'
+        SSL_CTX_ctrl((ctx),SSL_CTRL_CLEAR_OPTIONS,(op),NULL)
+        ~~~~~~~~~~~~                               ^~
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:31701:14: warning: implicit conversion changes signedness: 'long' to 'unsigned long' [-Wsign-conversion]
+  { result = SSL_CTX_clear_options(x0, x1); }
+           ~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/local/include/openssl/ssl.h:581:2: note: expanded from macro 'SSL_CTX_clear_options'
+        SSL_CTX_ctrl((ctx),SSL_CTRL_CLEAR_OPTIONS,(op),NULL)
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:31701:40: warning: implicit conversion changes signedness: 'unsigned long' to 'long' [-Wsign-conversion]
+  { result = SSL_CTX_clear_options(x0, x1); }
+             ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~
+/usr/local/include/openssl/ssl.h:581:45: note: expanded from macro 'SSL_CTX_clear_options'
+        SSL_CTX_ctrl((ctx),SSL_CTRL_CLEAR_OPTIONS,(op),NULL)
+        ~~~~~~~~~~~~                               ^~
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:32109:10: warning: implicit conversion changes signedness: 'long' to 'unsigned long' [-Wsign-conversion]
+  return SSL_CTX_get_mode(x0);
+  ~~~~~~ ^~~~~~~~~~~~~~~~~~~~
+/usr/local/include/openssl/ssl.h:596:2: note: expanded from macro 'SSL_CTX_get_mode'
+        SSL_CTX_ctrl((ctx),SSL_CTRL_MODE,0,NULL)
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:32132:14: warning: implicit conversion changes signedness: 'long' to 'unsigned long' [-Wsign-conversion]
+  { result = SSL_CTX_get_mode(x0); }
+           ~ ^~~~~~~~~~~~~~~~~~~~
+/usr/local/include/openssl/ssl.h:596:2: note: expanded from macro 'SSL_CTX_get_mode'
+        SSL_CTX_ctrl((ctx),SSL_CTRL_MODE,0,NULL)
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:32147:10: warning: implicit conversion changes signedness: 'long' to 'unsigned long' [-Wsign-conversion]
+  return SSL_CTX_get_options(x0);
+  ~~~~~~ ^~~~~~~~~~~~~~~~~~~~~~~
+/usr/local/include/openssl/ssl.h:583:2: note: expanded from macro 'SSL_CTX_get_options'
+        SSL_CTX_ctrl((ctx),SSL_CTRL_OPTIONS,0,NULL)
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:32170:14: warning: implicit conversion changes signedness: 'long' to 'unsigned long' [-Wsign-conversion]
+  { result = SSL_CTX_get_options(x0); }
+           ~ ^~~~~~~~~~~~~~~~~~~~~~~
+/usr/local/include/openssl/ssl.h:583:2: note: expanded from macro 'SSL_CTX_get_options'
+        SSL_CTX_ctrl((ctx),SSL_CTRL_OPTIONS,0,NULL)
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:32223:10: warning: implicit conversion changes signedness: 'long' to 'unsigned long' [-Wsign-conversion]
+  return SSL_CTX_get_session_cache_mode(x0);
+  ~~~~~~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/local/include/openssl/ssl.h:1621:2: note: expanded from macro 'SSL_CTX_get_session_cache_mode'
+        SSL_CTX_ctrl(ctx,SSL_CTRL_GET_SESS_CACHE_MODE,0,NULL)
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:32246:14: warning: implicit conversion changes signedness: 'long' to 'unsigned long' [-Wsign-conversion]
+  { result = SSL_CTX_get_session_cache_mode(x0); }
+           ~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/local/include/openssl/ssl.h:1621:2: note: expanded from macro 'SSL_CTX_get_session_cache_mode'
+        SSL_CTX_ctrl(ctx,SSL_CTRL_GET_SESS_CACHE_MODE,0,NULL)
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:33852:44: warning: implicit conversion loses integer precision: 'int' to 'uint16_t' (aka 'unsigned short') [-Wimplicit-int-conversion]
+  return SSL_CTX_set_max_proto_version(x0, x1);
+         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~     ^~
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:33885:48: warning: implicit conversion loses integer precision: 'int' to 'uint16_t' (aka 'unsigned short') [-Wimplicit-int-conversion]
+  { result = SSL_CTX_set_max_proto_version(x0, x1); }
+             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~     ^~
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:33900:44: warning: implicit conversion loses integer precision: 'int' to 'uint16_t' (aka 'unsigned short') [-Wimplicit-int-conversion]
+  return SSL_CTX_set_min_proto_version(x0, x1);
+         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~     ^~
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:33933:48: warning: implicit conversion loses integer precision: 'int' to 'uint16_t' (aka 'unsigned short') [-Wimplicit-int-conversion]
+  { result = SSL_CTX_set_min_proto_version(x0, x1); }
+             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~     ^~
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:33948:10: warning: implicit conversion changes signedness: 'long' to 'unsigned long' [-Wsign-conversion]
+  return SSL_CTX_set_mode(x0, x1);
+  ~~~~~~ ^~~~~~~~~~~~~~~~~~~~~~~~
+/usr/local/include/openssl/ssl.h:592:2: note: expanded from macro 'SSL_CTX_set_mode'
+        SSL_CTX_ctrl((ctx),SSL_CTRL_MODE,(op),NULL)
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:33948:31: warning: implicit conversion changes signedness: 'unsigned long' to 'long' [-Wsign-conversion]
+  return SSL_CTX_set_mode(x0, x1);
+         ~~~~~~~~~~~~~~~~~~~~~^~~
+/usr/local/include/openssl/ssl.h:592:36: note: expanded from macro 'SSL_CTX_set_mode'
+        SSL_CTX_ctrl((ctx),SSL_CTRL_MODE,(op),NULL)
+        ~~~~~~~~~~~~                      ^~
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:33981:14: warning: implicit conversion changes signedness: 'long' to 'unsigned long' [-Wsign-conversion]
+  { result = SSL_CTX_set_mode(x0, x1); }
+           ~ ^~~~~~~~~~~~~~~~~~~~~~~~
+/usr/local/include/openssl/ssl.h:592:2: note: expanded from macro 'SSL_CTX_set_mode'
+        SSL_CTX_ctrl((ctx),SSL_CTRL_MODE,(op),NULL)
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:33981:35: warning: implicit conversion changes signedness: 'unsigned long' to 'long' [-Wsign-conversion]
+  { result = SSL_CTX_set_mode(x0, x1); }
+             ~~~~~~~~~~~~~~~~~~~~~^~~
+/usr/local/include/openssl/ssl.h:592:36: note: expanded from macro 'SSL_CTX_set_mode'
+        SSL_CTX_ctrl((ctx),SSL_CTRL_MODE,(op),NULL)
+        ~~~~~~~~~~~~                      ^~
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:33996:10: warning: implicit conversion changes signedness: 'long' to 'unsigned long' [-Wsign-conversion]
+  return SSL_CTX_set_options(x0, x1);
+  ~~~~~~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/local/include/openssl/ssl.h:579:2: note: expanded from macro 'SSL_CTX_set_options'
+        SSL_CTX_ctrl((ctx),SSL_CTRL_OPTIONS,(op),NULL)
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:33996:34: warning: implicit conversion changes signedness: 'unsigned long' to 'long' [-Wsign-conversion]
+  return SSL_CTX_set_options(x0, x1);
+         ~~~~~~~~~~~~~~~~~~~~~~~~^~~
+/usr/local/include/openssl/ssl.h:579:39: note: expanded from macro 'SSL_CTX_set_options'
+        SSL_CTX_ctrl((ctx),SSL_CTRL_OPTIONS,(op),NULL)
+        ~~~~~~~~~~~~                         ^~
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:34029:14: warning: implicit conversion changes signedness: 'long' to 'unsigned long' [-Wsign-conversion]
+  { result = SSL_CTX_set_options(x0, x1); }
+           ~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/local/include/openssl/ssl.h:579:2: note: expanded from macro 'SSL_CTX_set_options'
+        SSL_CTX_ctrl((ctx),SSL_CTRL_OPTIONS,(op),NULL)
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:34029:38: warning: implicit conversion changes signedness: 'unsigned long' to 'long' [-Wsign-conversion]
+  { result = SSL_CTX_set_options(x0, x1); }
+             ~~~~~~~~~~~~~~~~~~~~~~~~^~~
+/usr/local/include/openssl/ssl.h:579:39: note: expanded from macro 'SSL_CTX_set_options'
+        SSL_CTX_ctrl((ctx),SSL_CTRL_OPTIONS,(op),NULL)
+        ~~~~~~~~~~~~                         ^~
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:34230:10: warning: implicit conversion changes signedness: 'long' to 'unsigned long' [-Wsign-conversion]
+  return SSL_CTX_set_session_cache_mode(x0, x1);
+  ~~~~~~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/local/include/openssl/ssl.h:1619:2: note: expanded from macro 'SSL_CTX_set_session_cache_mode'
+        SSL_CTX_ctrl(ctx,SSL_CTRL_SET_SESS_CACHE_MODE,m,NULL)
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:34230:45: warning: implicit conversion changes signedness: 'unsigned long' to 'long' [-Wsign-conversion]
+  return SSL_CTX_set_session_cache_mode(x0, x1);
+         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~
+/usr/local/include/openssl/ssl.h:1619:48: note: expanded from macro 'SSL_CTX_set_session_cache_mode'
+        SSL_CTX_ctrl(ctx,SSL_CTRL_SET_SESS_CACHE_MODE,m,NULL)
+        ~~~~~~~~~~~~                                  ^
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:34263:14: warning: implicit conversion changes signedness: 'long' to 'unsigned long' [-Wsign-conversion]
+  { result = SSL_CTX_set_session_cache_mode(x0, x1); }
+           ~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/local/include/openssl/ssl.h:1619:2: note: expanded from macro 'SSL_CTX_set_session_cache_mode'
+        SSL_CTX_ctrl(ctx,SSL_CTRL_SET_SESS_CACHE_MODE,m,NULL)
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:34263:49: warning: implicit conversion changes signedness: 'unsigned long' to 'long' [-Wsign-conversion]
+  { result = SSL_CTX_set_session_cache_mode(x0, x1); }
+             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~
+/usr/local/include/openssl/ssl.h:1619:48: note: expanded from macro 'SSL_CTX_set_session_cache_mode'
+        SSL_CTX_ctrl(ctx,SSL_CTRL_SET_SESS_CACHE_MODE,m,NULL)
+        ~~~~~~~~~~~~                                  ^
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:34636:10: warning: implicit conversion changes signedness: 'long' to 'unsigned long' [-Wsign-conversion]
+  return SSL_CTX_set_tmp_dh(x0, x1);
+  ~~~~~~ ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/local/include/openssl/ssl.h:1170:2: note: expanded from macro 'SSL_CTX_set_tmp_dh'
+        SSL_CTX_ctrl(ctx,SSL_CTRL_SET_TMP_DH,0,(char *)dh)
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:34674:14: warning: implicit conversion changes signedness: 'long' to 'unsigned long' [-Wsign-conversion]
+  { result = SSL_CTX_set_tmp_dh(x0, x1); }
+           ~ ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/local/include/openssl/ssl.h:1170:2: note: expanded from macro 'SSL_CTX_set_tmp_dh'
+        SSL_CTX_ctrl(ctx,SSL_CTRL_SET_TMP_DH,0,(char *)dh)
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:34689:10: warning: implicit conversion changes signedness: 'long' to 'unsigned long' [-Wsign-conversion]
+  return SSL_CTX_set_tmp_ecdh(x0, x1);
+  ~~~~~~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/local/include/openssl/ssl.h:1172:2: note: expanded from macro 'SSL_CTX_set_tmp_ecdh'
+        SSL_CTX_ctrl(ctx,SSL_CTRL_SET_TMP_ECDH,0,(char *)ecdh)
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:34727:14: warning: implicit conversion changes signedness: 'long' to 'unsigned long' [-Wsign-conversion]
+  { result = SSL_CTX_set_tmp_ecdh(x0, x1); }
+           ~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/local/include/openssl/ssl.h:1172:2: note: expanded from macro 'SSL_CTX_set_tmp_ecdh'
+        SSL_CTX_ctrl(ctx,SSL_CTRL_SET_TMP_ECDH,0,(char *)ecdh)
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:35356:10: warning: implicit conversion changes signedness: 'unsigned long' to 'long' [-Wsign-conversion]
+  return SSL_SESSION_get_ticket_lifetime_hint(x0);
+  ~~~~~~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:35379:14: warning: implicit conversion changes signedness: 'unsigned long' to 'long' [-Wsign-conversion]
+  { result = SSL_SESSION_get_ticket_lifetime_hint(x0); }
+           ~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:35567:10: warning: implicit conversion changes signedness: 'long' to 'unsigned long' [-Wsign-conversion]
+  return SSL_clear_mode(x0, x1);
+  ~~~~~~ ^~~~~~~~~~~~~~~~~~~~~~
+/usr/local/include/openssl/ssl.h:598:2: note: expanded from macro 'SSL_clear_mode'
+        SSL_ctrl((ssl),SSL_CTRL_CLEAR_MODE,(op),NULL)
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:35567:29: warning: implicit conversion changes signedness: 'unsigned long' to 'long' [-Wsign-conversion]
+  return SSL_clear_mode(x0, x1);
+         ~~~~~~~~~~~~~~~~~~~^~~
+/usr/local/include/openssl/ssl.h:598:38: note: expanded from macro 'SSL_clear_mode'
+        SSL_ctrl((ssl),SSL_CTRL_CLEAR_MODE,(op),NULL)
+        ~~~~~~~~                            ^~
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:35600:14: warning: implicit conversion changes signedness: 'long' to 'unsigned long' [-Wsign-conversion]
+  { result = SSL_clear_mode(x0, x1); }
+           ~ ^~~~~~~~~~~~~~~~~~~~~~
+/usr/local/include/openssl/ssl.h:598:2: note: expanded from macro 'SSL_clear_mode'
+        SSL_ctrl((ssl),SSL_CTRL_CLEAR_MODE,(op),NULL)
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:35600:33: warning: implicit conversion changes signedness: 'unsigned long' to 'long' [-Wsign-conversion]
+  { result = SSL_clear_mode(x0, x1); }
+             ~~~~~~~~~~~~~~~~~~~^~~
+/usr/local/include/openssl/ssl.h:598:38: note: expanded from macro 'SSL_clear_mode'
+        SSL_ctrl((ssl),SSL_CTRL_CLEAR_MODE,(op),NULL)
+        ~~~~~~~~                            ^~
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:36553:10: warning: implicit conversion changes signedness: 'long' to 'unsigned long' [-Wsign-conversion]
+  return SSL_get_mode(x0);
+  ~~~~~~ ^~~~~~~~~~~~~~~~
+/usr/local/include/openssl/ssl.h:602:9: note: expanded from macro 'SSL_get_mode'
+        SSL_ctrl((ssl),SSL_CTRL_MODE,0,NULL)
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:36576:14: warning: implicit conversion changes signedness: 'long' to 'unsigned long' [-Wsign-conversion]
+  { result = SSL_get_mode(x0); }
+           ~ ^~~~~~~~~~~~~~~~
+/usr/local/include/openssl/ssl.h:602:9: note: expanded from macro 'SSL_get_mode'
+        SSL_ctrl((ssl),SSL_CTRL_MODE,0,NULL)
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:36591:10: warning: implicit conversion changes signedness: 'long' to 'unsigned long' [-Wsign-conversion]
+  return SSL_get_options(x0);
+  ~~~~~~ ^~~~~~~~~~~~~~~~~~~
+/usr/local/include/openssl/ssl.h:589:9: note: expanded from macro 'SSL_get_options'
+        SSL_ctrl((ssl),SSL_CTRL_OPTIONS,0,NULL)
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:36614:14: warning: implicit conversion changes signedness: 'long' to 'unsigned long' [-Wsign-conversion]
+  { result = SSL_get_options(x0); }
+           ~ ^~~~~~~~~~~~~~~~~~~
+/usr/local/include/openssl/ssl.h:589:9: note: expanded from macro 'SSL_get_options'
+        SSL_ctrl((ssl),SSL_CTRL_OPTIONS,0,NULL)
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:38271:40: warning: implicit conversion loses integer precision: 'int' to 'uint16_t' (aka 'unsigned short') [-Wimplicit-int-conversion]
+  return SSL_set_max_proto_version(x0, x1);
+         ~~~~~~~~~~~~~~~~~~~~~~~~~     ^~
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:38304:44: warning: implicit conversion loses integer precision: 'int' to 'uint16_t' (aka 'unsigned short') [-Wimplicit-int-conversion]
+  { result = SSL_set_max_proto_version(x0, x1); }
+             ~~~~~~~~~~~~~~~~~~~~~~~~~     ^~
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:38319:40: warning: implicit conversion loses integer precision: 'int' to 'uint16_t' (aka 'unsigned short') [-Wimplicit-int-conversion]
+  return SSL_set_min_proto_version(x0, x1);
+         ~~~~~~~~~~~~~~~~~~~~~~~~~     ^~
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:38352:44: warning: implicit conversion loses integer precision: 'int' to 'uint16_t' (aka 'unsigned short') [-Wimplicit-int-conversion]
+  { result = SSL_set_min_proto_version(x0, x1); }
+             ~~~~~~~~~~~~~~~~~~~~~~~~~     ^~
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:38367:10: warning: implicit conversion changes signedness: 'long' to 'unsigned long' [-Wsign-conversion]
+  return SSL_set_mode(x0, x1);
+  ~~~~~~ ^~~~~~~~~~~~~~~~~~~~
+/usr/local/include/openssl/ssl.h:600:2: note: expanded from macro 'SSL_set_mode'
+        SSL_ctrl((ssl),SSL_CTRL_MODE,(op),NULL)
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:38367:27: warning: implicit conversion changes signedness: 'unsigned long' to 'long' [-Wsign-conversion]
+  return SSL_set_mode(x0, x1);
+         ~~~~~~~~~~~~~~~~~^~~
+/usr/local/include/openssl/ssl.h:600:32: note: expanded from macro 'SSL_set_mode'
+        SSL_ctrl((ssl),SSL_CTRL_MODE,(op),NULL)
+        ~~~~~~~~                      ^~
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:38400:14: warning: implicit conversion changes signedness: 'long' to 'unsigned long' [-Wsign-conversion]
+  { result = SSL_set_mode(x0, x1); }
+           ~ ^~~~~~~~~~~~~~~~~~~~
+/usr/local/include/openssl/ssl.h:600:2: note: expanded from macro 'SSL_set_mode'
+        SSL_ctrl((ssl),SSL_CTRL_MODE,(op),NULL)
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:38400:31: warning: implicit conversion changes signedness: 'unsigned long' to 'long' [-Wsign-conversion]
+  { result = SSL_set_mode(x0, x1); }
+             ~~~~~~~~~~~~~~~~~^~~
+/usr/local/include/openssl/ssl.h:600:32: note: expanded from macro 'SSL_set_mode'
+        SSL_ctrl((ssl),SSL_CTRL_MODE,(op),NULL)
+        ~~~~~~~~                      ^~
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:38415:10: warning: implicit conversion changes signedness: 'long' to 'unsigned long' [-Wsign-conversion]
+  return SSL_set_options(x0, x1);
+  ~~~~~~ ^~~~~~~~~~~~~~~~~~~~~~~
+/usr/local/include/openssl/ssl.h:585:2: note: expanded from macro 'SSL_set_options'
+        SSL_ctrl((ssl),SSL_CTRL_OPTIONS,(op),NULL)
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:38415:30: warning: implicit conversion changes signedness: 'unsigned long' to 'long' [-Wsign-conversion]
+  return SSL_set_options(x0, x1);
+         ~~~~~~~~~~~~~~~~~~~~^~~
+/usr/local/include/openssl/ssl.h:585:35: note: expanded from macro 'SSL_set_options'
+        SSL_ctrl((ssl),SSL_CTRL_OPTIONS,(op),NULL)
+        ~~~~~~~~                         ^~
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:38448:14: warning: implicit conversion changes signedness: 'long' to 'unsigned long' [-Wsign-conversion]
+  { result = SSL_set_options(x0, x1); }
+           ~ ^~~~~~~~~~~~~~~~~~~~~~~
+/usr/local/include/openssl/ssl.h:585:2: note: expanded from macro 'SSL_set_options'
+        SSL_ctrl((ssl),SSL_CTRL_OPTIONS,(op),NULL)
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+build/temp.freebsd-13.0-STABLE-amd64-3.9/_openssl.c:38448:34: warning: implicit conversion changes signedness: 'unsigned long' to 'long' [-Wsign-conversion]
+  { result = SSL_set_options(x0, x1); }
+             ~~~~~~~~~~~~~~~~~~~~^~~
+/usr/local/include/openssl/ssl.h:585:35: note: expanded from macro 'SSL_set_options'
+        SSL_ctrl((ssl),SSL_CTRL_OPTIONS,(op),NULL)
+        ~~~~~~~~                         ^~
+65 warnings and 2 errors generated.
+error: command '/ccache/libexec/ccache/cc' failed with exit code 1
+
+    =============================DEBUG ASSISTANCE=============================
+    If you are seeing a compilation error please try the following steps to
+    successfully install cryptography:
+    1) Upgrade to the latest pip and try again. This will fix errors for most
+       users. See: https://pip.pypa.io/en/stable/installing/#upgrading-pip
+    2) Read https://cryptography.io/en/latest/installation.html for specific
+       instructions for your platform.
+    3) Check our frequently asked questions for more information:
+       https://cryptography.io/en/latest/faq.html
+    =============================DEBUG ASSISTANCE=============================
+    
+*** Error code 1
+
+Stop.
+make: stopped in /usr/ports/security/py-cryptography
+=>> Cleaning up wrkdir
+===>  Cleaning for py39-cryptography-3.3.2
+build of security/py-cryptography | py39-cryptography-3.3.2 ended at Wed May  5 04:29:04 CDT 2021
+build time: 00:00:12
+!!! build failure encountered !!!
